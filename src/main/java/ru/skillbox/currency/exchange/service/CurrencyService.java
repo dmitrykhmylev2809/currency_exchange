@@ -11,6 +11,7 @@ import ru.skillbox.currency.exchange.repository.CurrencyRepository;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -28,15 +29,9 @@ public class CurrencyService {
     public List<CurrencyDto> getAllCurrencies() {
         log.info("CurrencyService method getAllCurrencies executed");
         List<Currency> currencies = repository.findAll();
-        List<CurrencyDto> listCurrencyDTO = new ArrayList<>();
-        for (Currency cur : currencies) {
-            CurrencyDto currencyDto = new CurrencyDto();
-
-            currencyDto.setName(cur.getName());
-            currencyDto.setValue(cur.getValue());
-            listCurrencyDTO.add(currencyDto);
-        }
-        return listCurrencyDTO;
+        return currencies.stream()
+                .map(mapper::convertToDto)
+                .collect(Collectors.toList());
     }
 
 

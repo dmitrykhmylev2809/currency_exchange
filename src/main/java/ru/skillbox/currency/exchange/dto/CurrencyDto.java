@@ -11,37 +11,25 @@ import ru.skillbox.currency.exchange.view.CurrencyViews;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonView(CurrencyViews.CurrencySummaryView.class)
 public class CurrencyDto {
+
+    @JsonView(CurrencyViews.CurrencyDetailView.class)
     private Long id;
 
+    @JsonView(CurrencyViews.CurrencySummaryView.class)
     private String name;
 
+    @JsonView(CurrencyViews.CurrencyDetailView.class)
     private Long nominal;
 
+    @JsonView(CurrencyViews.CurrencySummaryView.class)
     private Double value;
 
+    @JsonView(CurrencyViews.CurrencyDetailView.class)
     private Long isoNumCode;
 
+    @JsonView(CurrencyViews.CurrencyDetailView.class)
     private String isoCharCode;
 
-    @JsonView(CurrencyViews.CurrencyDetailView.class)
-    public Long getId() {
-        return id;
-    }
 
-    @JsonView(CurrencyViews.CurrencyDetailView.class)
-    public Long getNominal() {
-        return nominal;
-    }
-
-    @JsonView(CurrencyViews.CurrencyDetailView.class)
-    public Long getIsoNumCode() {
-        return isoNumCode;
-    }
-
-    @JsonView(CurrencyViews.CurrencyDetailView.class)
-    public String getIsoCharCode() {
-        return isoCharCode;
-    }
 }

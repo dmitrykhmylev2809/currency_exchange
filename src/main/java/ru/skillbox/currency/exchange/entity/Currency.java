@@ -13,7 +13,6 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"id", "nominal", "isoNumCode", "isoCharCode"})
 public class Currency {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")

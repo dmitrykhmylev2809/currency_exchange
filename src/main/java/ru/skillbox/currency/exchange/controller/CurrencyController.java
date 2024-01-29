@@ -31,12 +31,13 @@ public class CurrencyController {
     }
 
 
-
+    @JsonView(CurrencyViews.CurrencyDetailView.class)
     @GetMapping(value = "/convert")
     ResponseEntity<Double> convertValue(@RequestParam("value") Long value, @RequestParam("numCode") Long numCode) {
         return ResponseEntity.ok(service.convertValue(value, numCode));
     }
 
+    @JsonView(CurrencyViews.CurrencyDetailView.class)
     @PostMapping("/create")
     ResponseEntity<CurrencyDto> create(@RequestBody CurrencyDto dto) {
         return ResponseEntity.ok(service.create(dto));
